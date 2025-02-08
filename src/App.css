@@ -1,0 +1,117 @@
+/* 
+  Style your elements by creating CSS classes here.
+  Below, you can see an example of a class called "menu" that changes the color of the text to blue. Modify according to your needs.
+*/
+
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  height: auto;
+  width: 100vh;
+  padding: 2rem;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  overflow: visible;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 300px;
+  height: auto;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  flex: 1;
+  padding: 1rem;
+}
+
+.menu img {
+  width: 120px;
+  height: auto;
+  border-radius: 5%;
+}
+
+.menu-description {
+  flex: 1;
+}
+
+.menu-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.menu-explain {
+  font-weight: 200;
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 10px;
+}
+
+
+.price {
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 23vh;
+}
+
+.btn-primary {
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.price p {
+  margin: 0;
+  font-size: 13px;
+}
+
+h1 {
+  margin: 0;
+}
+
+.description-text {
+  font-size: 24px;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+
+.subtitle-1 {
+  color: orange;
+  font-family: 'Dancing Script', cursive;
+  font-size: 18px;
+}
+
+.subtitle-2 {
+  font-size: 30px;
+}
+
+.menu-items-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Ensures items start from the top */
+  gap: 10px;
+}
