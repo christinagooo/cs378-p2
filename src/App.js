@@ -1,10 +1,7 @@
 import './App.css';
 import MenuItem from './components/MenuItem';
+import { useState } from 'react';
 
-// import 'bootstrap/dist/css/bootstrap.min.css'; // This imports bootstrap css styles. You can use bootstrap or your own classes by using the className attribute in your elements.
-
-// Menu data. An array of objects where each object represents a menu item. Each menu item has an id, title, description, image name, and price.
-// You can use the image name to get the image from the images folder.
 const menuItems = [
   {
     id: 1,
@@ -78,8 +75,35 @@ const menuItems = [
   }
 ];
 
-
 function App() {
+  const [quantities, setQuantities] = useState({});
+
+  const updateQuantity = (id, change) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: Math.max(0, (prev[id] || 0) + change),
+    }));
+  };
+
+  const clearAll = () => {
+    setQuantities({});
+  };
+
+  const totalPrice = menuItems.reduce((sum, item) => sum + (quantities[item.id] || 0) * item.price, 0).toFixed(2);
+
+  const handleOrder = () => {
+    const orderedItems = menuItems
+      .filter((item) => quantities[item.id] > 0)
+      .map((item) => `- ${item.title} (x${quantities[item.id]})`)
+      .join("\n");
+
+    const message = orderedItems
+      ? `Order Placed!\n\n${orderedItems}\n\nTotal: $${totalPrice}`
+      : "Your cart is empty.";
+
+    alert(message);
+  };
+
   return (
     <div className="container">
       <img className="logo" src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="logo" />
@@ -89,8 +113,22 @@ function App() {
       </div>
       <div className="menu-items-container">
         {menuItems.map((item) => (
-          <MenuItem key={item.id} title={item.title} description={item.description} imageName={item.imageName} price={item.price} />
+          <MenuItem
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            description={item.description}
+            imageName={item.imageName}
+            price={item.price}
+            quantity={quantities[item.id] || 0}
+            updateQuantity={updateQuantity}
+          />
         ))}
+      </div>
+      <div className="bottom-bar">
+        <p>Subtotal: ${totalPrice}</p>
+        <button className="btn-primary" onClick={handleOrder}>Order</button>
+        <button className="btn-primary" onClick={clearAll}>Clear All</button>
       </div>
     </div>
   );

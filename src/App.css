@@ -3,12 +3,16 @@
   Below, you can see an example of a class called "menu" that changes the color of the text to blue. Modify according to your needs.
 */
 
+html {
+  overflow-x: hidden;
+}
 
 body {
   margin: 0;
   display: flex;
   justify-content: center;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 .container {
@@ -21,6 +25,7 @@ body {
   align-items: center;
   gap: 2rem;
   overflow: visible;
+  padding-bottom: 90px;
 }
 
 .logo {
@@ -76,10 +81,11 @@ body {
 
 .btn-primary {
   background-color: orange;
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .price p {
@@ -114,4 +120,36 @@ h1 {
   align-items: flex-start;
   /* Ensures items start from the top */
   gap: 10px;
+}
+
+.add-remove-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.bottom-bar p {
+  flex-grow: 1;
+  margin: 0;
+}
+
+.bottom-bar button {
+  flex-shrink: 0;
+  margin-left: 10px;
 }
